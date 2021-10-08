@@ -18,7 +18,7 @@ public class BaseTest {
 	public static WebDriver driver;
 
 	@BeforeSuite
-	public void initialize() throws IOException {
+	public void initialize() throws IOException, InterruptedException {
 
 		System.setProperty("webdriver.chrome.driver", "D:\\Driver\\chromedriver.exe");
 		// headless Mode
@@ -33,6 +33,7 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		// To open facebook
 		driver.get("https://www.salesforce.com/in/");
+		Thread.sleep(2000);
 	}
 
 	@AfterSuite
