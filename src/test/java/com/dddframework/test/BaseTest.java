@@ -20,7 +20,7 @@ public class BaseTest {
 	@BeforeSuite
 	public void initialize() throws IOException, InterruptedException {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\Driver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
 		// headless Mode
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
