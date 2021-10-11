@@ -26,11 +26,13 @@ public class BaseTest {
 		options.addArguments("--headless");
 		options.addArguments("--window-size=1920,1080");
 		driver = new ChromeDriver();
-
+		
 		// To maximize browser
 		driver.manage().window().maximize();
 		// Implicit wait
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		System.out.println(driver);
+		System.out.println("Hello");
 		// To open facebook
 		driver.get("https://www.salesforce.com/in/");
 		Thread.sleep(2000);
