@@ -41,14 +41,14 @@ public class BaseTest {
 	public void TeardownTest() {
 		BaseTest.driver.quit();
 	}
-	public static void main(String[] args) {
-	    TestListenerAdapter tla = new TestListenerAdapter();
-	    TestNG testng = new TestNG();
-	    List<String> suites = Lists.newArrayList();
-	    suites.add("C:\\Users\\shreyas.sambare\\eclipse-workspace\\com.dddframework.project\\testNG.xml");//path to xml..
-	    
-	    testng.setTestSuites(suites);
-	    testng.run();
-	}
+//	public static void main(String[] args) {
+//	    TestListenerAdapter tla = new TestListenerAdapter();
+//	    TestNG testng = new TestNG();
+//	    List<String> suites = Lists.newArrayList();
+//	    suites.add("C:\\Users\\shreyas.sambare\\eclipse-workspace\\com.dddframework.project\\testNG.xml");//path to xml..
+//	    
+//	    testng.setTestSuites(suites);
+//	    testng.run();
+//	}
 
 }
