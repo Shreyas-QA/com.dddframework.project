@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class HomePage {
@@ -33,8 +35,10 @@ public class HomePage {
 //	}
 
 	public void ClickProductTab() {
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.visibilityOf(ProductsTab));
 		ProductsTab.click();
-		Assert.assertEquals(true,ProductsTab.isDisplayed());
+		Assert.assertEquals(true, ProductsTab.isDisplayed());
 	}
 
 }
