@@ -36,7 +36,7 @@ public class BaseTest {
 		// Check if parameter passed as 'chrome'
 		else if (browserName.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe");
+					".\\Drivers\\chromedriver.exe");
 			// create chrome instance
 			driver = new ChromeDriver();
 
