@@ -7,41 +7,59 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import org.testng.collections.Lists;
+
+import Utilties.Drivers;
 
 public class BaseTest {
 
-	public static WebDriver driver;
+	public WebDriver driver;
 
+	@Parameters({ "browser" }) // chrome
 	@BeforeSuite
-	public void initialize() throws IOException, InterruptedException {
+	public void initialize(String browserName) throws Exception {
 
-		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
-		// headless Mode
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		options.addArguments("--window-size=1920,1080");
-		driver = new ChromeDriver();
-		
-		// To maximize browser
+		// Check if parameter passed from TestNG is 'firefox'
+		if (browserName.equalsIgnoreCase("firefox")) {
+			// create firefox instance
+			System.setProperty("webdriver.gecko.driver", ".\\geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+		// Check if parameter passed as 'chrome'
+		else if (browserName.equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver",
+					System.getProperty("user.dir") + "\\Drivers\\chromedriver.exe");
+			// create chrome instance
+			driver = new ChromeDriver();
+
+		}
+		// Check if parameter passed as 'Edge'
+		else if (browserName.equalsIgnoreCase("Edge")) {
+			// set path to Edge.exe
+			System.setProperty("webdriver.edge.driver", ".\\MicrosoftWebDriver.exe");
+			// create Edge instance
+			driver = new EdgeDriver();
+		} else {
+			// If no browser passed throw exception
+			throw new Exception("Browser is not correct");
+		}
 		driver.manage().window().maximize();
-		// Implicit wait
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		System.out.println(driver);
-		System.out.println("Hello");
-		// To open facebook
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("https://www.salesforce.com/in/");
-		Thread.sleep(2000);
+
 	}
 
 	@AfterSuite
 	// Test cleanup
 	public void TeardownTest() {
-		BaseTest.driver.quit();
+		driver.quit();
 	}
 //	public static void main(String[] args) {
 //	    TestListenerAdapter tla = new TestListenerAdapter();

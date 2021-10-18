@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class HomePage {
 
@@ -32,6 +34,7 @@ public class HomePage {
 
 	public void ClickProductTab() {
 		ProductsTab.click();
+		Assert.assertEquals(true,ProductsTab.isDisplayed());
 	}
 
 }
