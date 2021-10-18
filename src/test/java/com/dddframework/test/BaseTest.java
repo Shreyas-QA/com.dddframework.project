@@ -15,7 +15,7 @@ import org.testng.collections.Lists;
 
 public class BaseTest {
 
-	public  WebDriver driver;
+	public static WebDriver driver;
 
 	@BeforeSuite
 	public void initialize() throws IOException, InterruptedException {
