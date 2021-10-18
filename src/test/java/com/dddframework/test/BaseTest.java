@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.collections.Lists;
@@ -22,8 +23,8 @@ public class BaseTest {
 
 	public WebDriver driver;
 
-	@Parameters({ "browser" }) // chrome
-	@BeforeSuite
+	@Parameters({"browser"}) // chrome
+	@BeforeClass
 	public void initialize(String browserName) throws Exception {
 
 		// Check if parameter passed from TestNG is 'firefox'
@@ -61,14 +62,14 @@ public class BaseTest {
 	public void TeardownTest() {
 		driver.quit();
 	}
-//	public static void main(String[] args) {
-//	    TestListenerAdapter tla = new TestListenerAdapter();
-//	    TestNG testng = new TestNG();
-//	    List<String> suites = Lists.newArrayList();
-//	    suites.add("C:\\Users\\shreyas.sambare\\eclipse-workspace\\com.dddframework.project\\testNG.xml");//path to xml..
-//	    
-//	    testng.setTestSuites(suites);
-//	    testng.run();
-//	}
+	public static void main(String[] args) {
+	    TestListenerAdapter tla = new TestListenerAdapter();
+	    TestNG testng = new TestNG();
+	    List<String> suites = Lists.newArrayList();
+	    suites.add("C:\\Users\\shreyas.sambare\\eclipse-workspace\\com.dddframework.project\\testNG.xml");//path to xml..
+	    
+	    testng.setTestSuites(suites);
+	    testng.run();
+	}
 
 }

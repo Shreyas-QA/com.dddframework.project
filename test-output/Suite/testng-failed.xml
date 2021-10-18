@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test thread-count="1" name="TestApp(failed)" parallel="classes">
+  <test thread-count="1" name="TestApp(failed)">
+    <parameter name="browser" value="Chrome"/>
     <classes>
       <class name="com.dddframework.test.HomeTest">
         <methods>
